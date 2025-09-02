@@ -1,0 +1,1 @@
+This is a Python Fastapi docker langchain practice project
