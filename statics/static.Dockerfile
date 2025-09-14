@@ -3,6 +3,15 @@
 # FROM image_name:latest
 FROM python:3.13.7-slim-trixie
 
+# Set the working directory inside the container
+WORKDIR /app
+
+# COPY ./localfolder /containerfolder
+# RUN mkdir -p /app # workdir already ensures that app is created if not
+COPY ./src .
+
+# RUN echo "yies" > yies.html
+
 # run the following command from inside the proj folder
 # docker build -f Dockerfile -t deploy-ai-agent .
 # docker run -it deploy-ai-agent
