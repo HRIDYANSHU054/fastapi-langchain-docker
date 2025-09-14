@@ -23,4 +23,5 @@ COPY ./src .
 # python -m http.server 8000
 # docker run -it -p 3000:8000 deploy-ai-agent
 # (dockerEnabledPort:internalAppRunningPort)
-CMD ["python", "-m", "http.server", "8000"]
+# we already have the command in compose file so this is extra
+# CMD ["python", "-m", "http.server", "8000"]

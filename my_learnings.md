@@ -105,3 +105,8 @@ print(template.format(text="Hello")) \`\`\`
 ------------------------------------------------------------------------
 
 End of journal entry.
+
+
+
+make sure ki watch mode me chalao after doign the develop watch in compose run the compose up using this command otherwise watching would not haopen
+docker compose up -w --build 

@@ -12,3 +12,33 @@ services:
       - 3000:8000
     volumes:
       - ./statics/src:/app
+
+  backrooms: #custom key name could have also been my-app
+    # image: python:3.13.7-slim-trixie
+    build:
+      context: ./backrooms
+      # dockerfile: ./statics/static.Dockerfile dont do this
+      dockerfile:  Dockerfile
+    command: 
+      uv run uvicorn main:app --host 0.0.0.0 --port 8000
+    environment:
+      - PORT=8000
+      - PROJECT_NAME=Project Backrooms
+    env_file:
+      - .env.backrooms
+    ports:
+      - 5000:8000
+    # volumes:
+    #   - ./backrooms/src:/app/src
+    develop:
+      watch:
+        - action: rebuild
+        # local path to watch
+          path: ./backrooms/pyproject.toml
+        - action: restart
+          path: ./backrooms/src/
+        - action: restart
+          path: ./backrooms/Dockerfile
+        - action: sync
+          path: ./backrooms/src
+          target: /app/src
