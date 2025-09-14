@@ -2,11 +2,13 @@ services:
   app: #custom key name could have also been my-app
     # image: python:3.13.7-slim-trixie
     build:
-      dockerfile: Dockerfile
-      context: .
+      context: ./statics
+      # dockerfile: ./statics/static.Dockerfile dont do this
+      dockerfile:  static.Dockerfile
+    command: 
+      python -m http.server 8000
     ports:
       - 8000:8000
       - 3000:8000
-    command: 
-      python -m http.server 8000
-          
+    volumes:
+      - ./statics/src:/app
